@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>MultiStore | Home</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="logo">🛒 MultiStore</div>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="produtos/index.html">Produtos</a>
+            <a href="cadastro/index.html">Cadastrar</a>
+            <button id="theme-toggle">🌓</button>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <h1>MultiStore</h1>
+            <p>Seu slogan: "Variedade infinita, qualidade garantida."</p>
+        </section>
+
+        <section class="cards-container">
+            <div class="card" onclick="location.href='produtos/index.html'">
+                <h3>Ver Vitrine</h3>
+                <p>Explore todos os nossos produtos em estoque.</p>
+            </div>
+            <div class="card" onclick="location.href='cadastro/index.html'">
+                <h3>Novo Produto</h3>
+                <p>Adicione itens ao catálogo rapidamente.</p>
+            </div>
+        </section>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>

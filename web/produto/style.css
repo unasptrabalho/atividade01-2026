@@ -1,0 +1,90 @@
+/* Importa as variáveis de cores se não estiverem no global */
+:root {
+    --bg-body: #ffe4e1; /* Rosa Bebê */
+    --bg-card: #ffffff;
+    --text-main: #4a0e0e;
+    --accent: #db7093; /* Rosa Escuro */
+    --header-bg: #ffc0cb;
+}
+
+[data-theme="dark"] {
+    --bg-body: #2d0a15; 
+    --bg-card: #451021;
+    --text-main: #ffb6c1; 
+    --accent: #ff1493; /* Rosa Choque */
+    --header-bg: #1a050b;
+}
+
+/* Layout da Grade de Produtos */
+.container-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    padding: 40px 5%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Estilização do Card de Produto */
+.card {
+    background-color: var(--bg-card);
+    padding: 25px;
+    border-radius: 20px;
+    border: 2px solid transparent;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    border-color: var(--accent);
+    box-shadow: 0 15px 30px rgba(219, 112, 147, 0.2);
+}
+
+/* Título do Produto */
+.card h3 {
+    color: var(--accent);
+    margin: 15px 0 10px 0;
+    font-size: 1.5rem;
+}
+
+/* Categoria (Etiqueta) */
+.card em {
+    background-color: var(--bg-body);
+    color: var(--accent);
+    padding: 4px 12px;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-style: normal;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+/* Descrição */
+.card p {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin: 15px 0;
+    flex-grow: 1; /* Garante que os cards tenham o mesmo tamanho */
+}
+
+/* Preço em destaque */
+.preco {
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: var(--accent);
+    margin-top: 10px;
+}
+
+/* Mensagem quando não há produtos */
+#lista-produtos h3 {
+    grid-column: 1 / -1; /* Ocupa a largura toda da grade */
+    text-align: center;
+    padding: 100px 0;
+    color: var(--accent);
+    font-style: italic;
+}

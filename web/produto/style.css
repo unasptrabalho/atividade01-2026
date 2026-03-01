@@ -88,3 +88,28 @@
     color: var(--accent);
     font-style: italic;
 }
+
+/* --- Botão de Apagar no Card --- */
+.btn-delete {
+    background-color: #ff4d4d; /* Vermelho suave */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 15px;
+    transition: all 0.3s ease;
+    width: 100%; /* Faz o botão esticar acompanhando a largura do card */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    font-size: 1rem;
+}
+
+.btn-delete:hover {
+    background-color: #cc0000;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(204, 0, 0, 0.3);
+}

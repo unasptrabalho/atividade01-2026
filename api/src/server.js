@@ -1,8 +1,10 @@
 const express = require('express');
 const mysql = require('mysql2');
+const cors = require('cors');
 
 const app = express();
 app.use(express.json());
+app.use(cors());
 
 const pool = mysql.createPool({
   host: 'benserverplex.ddns.net',
@@ -26,9 +28,8 @@ app.post('/produtos', (req, res) => {
   pool.query(query, [nome, preco, categoria, descricao], (err, result) => {
     if (err) {
       console.error(err);
-      return res.status(500).json({ message: 'Erro interno ao cadastrar o produto.' });
+      return res.status(500).json({ message: 'Erro interno ao cadastrar.' });
     }
-
     if (result.affectedRows > 0) {
       return res.status(201).json({ message: 'Produto cadastrado com sucesso!' });
     }
@@ -36,19 +37,33 @@ app.post('/produtos', (req, res) => {
 });
 
 app.get('/produtos', (req, res) => {
-  const query = 'SELECT name AS nome, price AS preco, category AS categoria, description AS descricao FROM products_geovanna';
+  const query = 'SELECT id, name AS nome, price AS preco, category AS categoria, description AS descricao FROM products_geovanna';
 
   pool.query(query, (err, rows) => {
     if (err) {
       console.error(err);
-      return res.status(500).json({ message: 'Erro interno ao buscar os produtos.' });
+      return res.status(500).json({ message: 'Erro interno ao buscar.' });
     }
-
     if (rows.length > 0) {
       return res.json(rows);
     }
-
     return res.status(404).json({ message: 'Nenhum produto encontrado.' });
+  });
+});
+
+app.delete('/produtos/:id', (req, res) => {
+  const { id } = req.params;
+  const query = 'DELETE FROM products_geovanna WHERE id = ?';
+
+  pool.query(query, [id], (err, result) => {
+    if (err) {
+      console.error(err);
+      return res.status(500).json({ message: 'Erro interno ao deletar.' });
+    }
+    if (result.affectedRows > 0) {
+      return res.status(200).json({ message: 'Produto apagado com sucesso!' });
+    }
+    return res.status(404).json({ message: 'Produto não encontrado.' });
   });
 });
 
